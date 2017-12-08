@@ -1,0 +1,17 @@
+<templateSet group="Tests">
+  <template name="case3" value="public ClassName(){&#10;    step1(&quot;&quot;);&#10;    step2(&quot;&quot;);&#10;    step3(&quot;&quot;);&#10;}&#10;&#10;@Step(&quot;{title}&quot;)&#10;public void step1(String title) {}&#10;&#10;@Step(&quot;{title}&quot;)&#10;public void step2(String title) {}&#10;&#10;@Step(&quot;{title}&quot;)&#10;public void step3(String title) {}" description="add testcase template" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="JAVA_DECLARATION" value="true" />
+    </context>
+  </template>
+  <template name="case10" value="public ClassName(){&#10;    step1(&quot;&quot;);&#10;    step2(&quot;&quot;);&#10;    step3(&quot;&quot;);&#10;    step4(&quot;&quot;);&#10;    step5(&quot;&quot;);&#10;    step6(&quot;&quot;);&#10;    step7(&quot;&quot;);&#10;    step8(&quot;&quot;);&#10;    step9(&quot;&quot;);&#10;    step10(&quot;&quot;);&#10;}&#10;&#10;@Step(&quot;{title}&quot;)&#10;public void step1(String title) {}&#10;&#10;@Step(&quot;{title}&quot;)&#10;public void step2(String title) {}&#10;&#10;@Step(&quot;{title}&quot;)&#10;public void step3(String title) {}&#10;&#10;@Step(&quot;{title}&quot;)&#10;public void step4(String title) {}&#10;&#10;@Step(&quot;{title}&quot;)&#10;public void step5(String title) {}&#10;&#10;@Step(&quot;{title}&quot;)&#10;public void step6(String title) {}&#10;&#10;@Step(&quot;{title}&quot;)&#10;public void step7(String title) {}&#10;&#10;@Step(&quot;{title}&quot;)&#10;public void step8(String title) {}&#10;&#10;@Step(&quot;{title}&quot;)&#10;public void step9(String title) {}&#10;&#10;@Step(&quot;{title}&quot;)&#10;public void step10(String title) {}" description="add testcase template" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="JAVA_DECLARATION" value="true" />
+    </context>
+  </template>
+  <template name="test" value="@Test&#10;@DisplayName(&quot;title&quot;)&#10;//    @Video&#10;public void test() {}" description="add test template" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="JAVA_DECLARATION" value="true" />
+    </context>
+  </template>
+</templateSet>

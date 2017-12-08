@@ -1,0 +1,7 @@
+<templateSet group="Methods">
+  <template name="random interval" value="public float randomInterval(int min, int max) {&#10;        return (float) (java.lang.Math.random()*(max - min)) + min;&#10;    }" description="method" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="JAVA_DECLARATION" value="true" />
+    </context>
+  </template>
+</templateSet>
