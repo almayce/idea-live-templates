@@ -14,4 +14,9 @@
       <option name="JAVA_DECLARATION" value="true" />
     </context>
   </template>
+  <template name="safe" value="protected com.codeborne.selenide.SelenideElement safeClick(com.codeborne.selenide.SelenideElement element, int seconds) {&#10;        sleep(1);&#10;        return seconds == 0 ? element :&#10;                (element.isDisplayed() ? click(element) :&#10;                        safeClick(element, --seconds));&#10;    }" description="action" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="JAVA_DECLARATION" value="true" />
+    </context>
+  </template>
 </templateSet>
