@@ -39,4 +39,9 @@
       <option name="KOTLIN_CLASS" value="true" />
     </context>
   </template>
+  <template name="system monitor" value="object SystemMonitor {&#10;&#10;    private val bean = ManagementFactory&#10;            .getOperatingSystemMXBean() as OperatingSystemMXBean&#10;&#10;    private val runtimeSystemUsage: String&#10;        get() {&#10;            val cpu = bean.systemCpuLoad * 100&#10;            val prc = bean.processCpuLoad * 100&#10;            val ram = Runtime.getRuntime().totalMemory().toFloat() / 1073741824&#10;&#10;            val cpuString = &quot;CPU ${cpu.toInt()} %&quot;&#10;            val prcString = &quot;PRC ${prc.toInt()} %&quot;&#10;            val ramString = &quot;RAM ${round(ram, 1)} gb&quot;&#10;&#10;            return &quot;$cpuString $prcString $ramString&quot;&#10;        }&#10;&#10;    private fun round(d: Float, decimalPlace: Int) =&#10;            d.toBigDecimal().setScale(decimalPlace, BigDecimal.ROUND_HALF_UP).toFloat()&#10;&#10;    fun printUsage(action: String, target: String) =&#10;        println(&quot;$runtimeSystemUsage | $action $target&quot;)&#10;}" description="class" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="KOTLIN_TOPLEVEL" value="true" />
+    </context>
+  </template>
 </templateSet>

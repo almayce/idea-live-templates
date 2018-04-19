@@ -19,4 +19,11 @@
       <option name="GROOVY_STATEMENT" value="true" />
     </context>
   </template>
+  <template name="grgit" value="import org.ajoberstar.grgit.Grgit&#10;tasks.withType(Test) {&#10;    doFirst {&#10;        def notExist = !new File(&quot;$rootDir/codecs&quot;).exists()new java.io.File(&quot;$rootDir/codecs&quot;).exists()&#10;        if (notExist) {&#10;            Grgit.clone(dir: &quot;$rootDir/codecs&quot;,&#10;                    uri: &quot;https://github.com/almayce/ffmpeg-bin&quot;)&#10;        }&#10;    }&#10;}" description="example" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="GROOVY_DECLARATION" value="true" />
+      <option name="GROOVY_EXPRESSION" value="true" />
+      <option name="GROOVY_STATEMENT" value="true" />
+    </context>
+  </template>
 </templateSet>

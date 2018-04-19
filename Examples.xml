@@ -34,11 +34,15 @@
   <template name="animation scale" value="ScaleAnimation scaleAnim = new ScaleAnimation(0.7F, 1.0F, 0.7F, 1.0F, Animation.RELATIVE_TO_PARENT, 0.5F, Animation.RELATIVE_TO_PARENT, 0.5F);&#10;        scaleAnim.setFillAfter(true);&#10;        scaleAnim.setDuration(1000);&#10;        scaleAnim.setAnimationListener(new Animation.AnimationListener() {&#10;        @java.lang.Override&#10;        public void onAnimationStart(Animation animation) {&#10;&#10;        }&#10;&#10;        @java.lang.Override&#10;        public void onAnimationEnd(Animation animation) {&#10;&#10;        }&#10;&#10;        @java.lang.Override&#10;        public void onAnimationRepeat(Animation animation) {&#10;&#10;        }&#10;    });" description="example" toReformat="true" toShortenFQNames="true">
     <context>
       <option name="JAVA_DECLARATION" value="true" />
+      <option name="JAVA_EXPRESSION" value="true" />
+      <option name="JAVA_STATEMENT" value="true" />
     </context>
   </template>
   <template name="animation translate" value="//infinite translate animation&#10;TranslateAnimation transAnim = new TranslateAnimation(displayMetrics.widthPixels, 0, 0, 0);&#10;transAnim.setDuration(600);&#10;transAnim.setRepeatMode(Animation.REVERSE);&#10;transAnim.setRepeatCount(Animation.INFINITE);&#10;transAnim.setInterpolator(new AccelerateDecelerateInterpolator());&#10;view.startAnimation(transAnim);&#10;&#10;//fab translate animation&#10;TranslateAnimation transAnim = new TranslateAnimation(500, 0, 0, 0);&#10;transAnim.setDuration(400);&#10;transAnim.setFillAfter(true);&#10;binding.fab.setClickable(false);&#10;imageView.setVisibility(View.GONE);&#10;imageView.startAnimation(transAnim);" description="example" toReformat="true" toShortenFQNames="true">
     <context>
       <option name="JAVA_DECLARATION" value="true" />
+      <option name="JAVA_EXPRESSION" value="true" />
+      <option name="JAVA_STATEMENT" value="true" />
     </context>
   </template>
   <template name="check connection" value="public boolean isOnline() {&#10;        ConnectivityManager cm =&#10;                (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);&#10;        NetworkInfo netInfo = cm.getActiveNetworkInfo();&#10;        return netInfo != null &amp;&amp; netInfo.isConnectedOrConnecting();&#10;    }" description="example" toReformat="true" toShortenFQNames="true">
@@ -54,11 +58,15 @@
   <template name="listener touch drag n drop" value="private View.OnTouchListener onTouchListener = new View.OnTouchListener() {&#10;        float startX;&#10;        float startY;&#10;&#10;        float tolerance = 100F;&#10;        float dX, dY;&#10;&#10;        @java.lang.Override&#10;        public boolean onTouch(View view, MotionEvent event) {&#10;&#10;            boolean doneX = false;&#10;            boolean doneY = false;&#10;&#10;            switch (event.getAction()) {&#10;&#10;                case MotionEvent.ACTION_DOWN:&#10;                    startX = view.getX();&#10;                    startY = view.getY();&#10;                    dX = view.getX() - event.getRawX();&#10;                    dY = view.getY() - event.getRawY();&#10;                    break;&#10;&#10;                case MotionEvent.ACTION_MOVE:&#10;                    view.setX(event.getRawX() + dX);&#10;                    view.setY(event.getRawY() + dY);&#10;                    break;&#10;&#10;                case MotionEvent.ACTION_UP:&#10;&#10;                    float x = view.getX() + view.getWidth() / 2;&#10;                    float y = view.getY() + view.getHeight() / 2;&#10;&#10;&#10;                    for (int o = 0; o &lt; markers.size(); o++) {&#10;                        ImageView marker = (ImageView) findViewById(markers.get(o));&#10;                        float correctX = marker.getX() + marker.getWidth() / 2;&#10;                        float correctY = marker.getY() + marker.getHeight() / 2;&#10;&#10;                        java.lang.System.out.println(x + &quot; &quot; + correctX);&#10;                        java.lang.System.out.println(y + &quot; &quot; + correctY);&#10;&#10;&#10;                        if (x &gt; correctX - tolerance &amp;&amp; x &lt; correctX + tolerance)&#10;                            doneX = true;&#10;                        if (y &gt; correctY - tolerance &amp;&amp; y &lt; correctY + tolerance)&#10;                            doneY = true;&#10;&#10;                        if (doneX &amp;&amp; doneY) {&#10;&#10;                            view.setX(correctX - view.getWidth() / 2);&#10;                            view.setY(correctY - view.getHeight() / 2);&#10;&#10;                            charPresenter.playSound(&quot;correctly&quot;);&#10;                            view.setOnTouchListener(null);&#10;                            markers.remove(o);&#10;&#10;                            if (markers.size() == 0) {&#10;                                App.getProgressManagerInstance().saveProgress(getIntent().getStringExtra(&quot;name&quot;));&#10;                                charPresenter.onDone();&#10;                            }&#10;                            break;&#10;&#10;                        } else if (o == markers.size() - 1) {&#10;                            charPresenter.playSound(&quot;wrong&quot;);&#10;                            view.setX(startX);&#10;                            view.setY(startY);&#10;                        }&#10;                    }&#10;                default:&#10;                    return false;&#10;            }&#10;            return true;&#10;        }&#10;    };" description="example" toReformat="true" toShortenFQNames="true">
     <context>
       <option name="JAVA_DECLARATION" value="true" />
+      <option name="JAVA_EXPRESSION" value="true" />
+      <option name="JAVA_STATEMENT" value="true" />
     </context>
   </template>
   <template name="observable interval" value="disposable = Observable.interval(1, TimeUnit.MILLISECONDS)&#10;            .compose(new SchedulersTransformer&lt;&gt;())&#10;            .subscribe(aLong -&gt; {&#10;        if (aLong == 1)&#10;            App.playSound(&quot;well_done&quot;);&#10;        if (aLong == 1000)&#10;            App.playSound(&quot;well_done_voice1&quot;);&#10;        if (aLong == 2000)&#10;            App.playSound(&quot;try_again&quot;);&#10;        if (aLong == 3500)&#10;            getViewState().restartActivity();&#10;        if (App.isCancelled || aLong &gt; 6000)&#10;            disposable.dispose();&#10;    });" description="example" toReformat="true" toShortenFQNames="true">
     <context>
       <option name="JAVA_DECLARATION" value="true" />
+      <option name="JAVA_EXPRESSION" value="true" />
+      <option name="JAVA_STATEMENT" value="true" />
     </context>
   </template>
   <template name="snackbar" value="@java.lang.Override&#10;    public void removeSnack(java.lang.String name) {&#10;        playSound(Sounds.REMOVE);&#10;        Snackbar.make(binding.gvItems, &quot;Ингредиент &quot; + name + &quot; удален.&quot;, Snackbar.LENGTH_SHORT)&#10;                .setActionTextColor(Color.WHITE)&#10;                .setAction(&quot;ОТМЕНИТЬ&quot;, new View.OnClickListener() {&#10;                    @java.lang.Override&#10;                    public void onClick(View v) {&#10;                        playSound(Sounds.ADD);&#10;                        fridgePresenter.onSnackDismissClick();&#10;                    }&#10;                }).show();&#10;    }" description="example" toReformat="true" toShortenFQNames="false">
@@ -87,6 +95,22 @@
     </context>
   </template>
   <template name="retrofit kotlin" value="var retrofit: Retrofit = Retrofit.Builder()&#10;       .addCallAdapterFactory(RxJava2CallAdapterFactory.create())&#10;       .addConverterFactory(GsonConverterFactory.create())&#10;       .baseUrl(&quot;http://api.taigastory.ru&quot;)&#10;       .build();&#10;&#10;var apiRegister: APIregister = retrofit.create(APIregister::class.java)&#10;&#10;apiRegister.postRegister(name, surname, city, &quot;password&quot;, &quot;login&quot;, email)&#10;       .subscribeOn(Schedulers.newThread())&#10;       .observeOn(AndroidSchedulers.mainThread())&#10;       .subscribe { resultRegister -&gt;&#10;           var gsonRegister = Gson()&#10;           val tokenRegister = gsonRegister.toJson(resultRegister.tokenRegister)&#10;           val responseRegister = gsonRegister.toJson(resultRegister.register)&#10;           Log.d(&quot;api/register&quot;, &quot;$tokenRegister $responseRegister&quot;)&#10;       }&#10;&#10;open class SettingsResponse {&#10;   @SerializedName(&quot;user_info&quot;)&#10;   @Expose&#10;   open var settings: Object? = null&#10;}&#10;&#10;interface APIregister {&#10;   @POST(&quot;/api/register&quot;)&#10;   @FormUrlEncoded&#10;   fun postRegister(@Field(&quot;name&quot;) name: String,&#10;                    @Field(&quot;surname&quot;) surname: String,&#10;                    @Field(&quot;city&quot;) city: String,&#10;                    @Field(&quot;password&quot;) password: String,&#10;                    @Field(&quot;login&quot;) login: String,&#10;                    @Field(&quot;email&quot;) email: String): Observable&lt;RegisterResponse&gt;&#10;}" description="example" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="KOTLIN_CLASS" value="true" />
+    </context>
+  </template>
+  <template name="execute" value="java.lang.Runtime.getRuntime().exec(&quot;allure generate build/allure-results -- clean&quot;);" description="example" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="JAVA_EXPRESSION" value="true" />
+      <option name="JAVA_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="exec" value="@Throws(java.io.IOException::class)&#10;    fun exec(cmd: String): String {&#10;        val s = Scanner(Runtime.getRuntime().exec(cmd).inputStream).useDelimiter(&quot;\\A&quot;)&#10;        val target = StringBuilder()&#10;        while (s.hasNext())&#10;            target.append(s.next())&#10;        return target.toString()&#10;    }" description="example" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="KOTLIN_CLASS" value="true" />
+    </context>
+  </template>
+  <template name="assume balance" value="protected fun assumeBalance(balance: String) =&#10;            Assume.assumeTrue(&quot;Available balance is not enought!&quot;, balance.split(&quot;.&quot;)[0].replace(&quot;,&quot;, &quot;&quot;).toLong() &gt; 0)" description="example" toReformat="true" toShortenFQNames="true">
     <context>
       <option name="KOTLIN_CLASS" value="true" />
     </context>
