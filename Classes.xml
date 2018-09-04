@@ -44,4 +44,14 @@
       <option name="KOTLIN_TOPLEVEL" value="true" />
     </context>
   </template>
+  <template name="selenoid" value="public class SelenoidWebDriverProvider implements WebDriverProvider {&#10;&#10;    @java.lang.Override&#10;    public WebDriver createDriver(DesiredCapabilities capabilities) {&#10;        DesiredCapabilities browser = new DesiredCapabilities();&#10;        browser.setBrowserName(&quot;chrome&quot;);&#10;        browser.setVersion(&quot;70.0&quot;);&#10;        browser.setCapability(&quot;enableVNC&quot;, true);&#10;&#10;        try {&#10;            RemoteWebDriver driver = new RemoteWebDriver(&#10;                    URI.create(&quot;http://localhost:4444/wd/hub&quot;).toURL(),&#10;                    browser&#10;            );&#10;            driver.manage().window().setSize(new Dimension(1280, 1024));&#10;            return driver;&#10;        } catch (MalformedURLException e) {&#10;            throw new java.lang.RuntimeException(e);&#10;        }&#10;    }&#10;}" description="class" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="JAVA_DECLARATION" value="true" />
+    </context>
+  </template>
+  <template name="dead link detector" value="object DeadLinkDetector {&#10;&#10;    fun execute() {&#10;        val executors = Executors.newFixedThreadPool(30)&#10;        val hrefCollection = Selenide.`$$`(By.xpath(&quot;.//a[@href!='']&quot;))&#10;&#10;        for (hrefElement in hrefCollection)&#10;            executors.execute(RunnableUnit(hrefElement))&#10;&#10;        executors.shutdown()&#10;&#10;        while (!executors.isTerminated)&#10;            sleep(1)&#10;&#10;        val builder = StringBuilder()&#10;        if (errorList.size &gt; 0) {&#10;            for (link in errorList)&#10;                builder.append(link).append(&quot;\n&quot;)&#10;            AllureAttachment.text(&quot;Broken Links&quot;, builder.toString())&#10;        }&#10;    }&#10;&#10;    class RunnableUnit internal constructor(private val hrefEl: WebElement) : Runnable {&#10;        override fun run() {&#10;            sendGet(hrefEl)&#10;        }&#10;    }&#10;&#10;    var errorList: MutableList&lt;String&gt; = ArrayList()&#10;&#10;    private fun sendGet(element: WebElement) {&#10;&#10;        val href = element.getAttribute(&quot;href&quot;)&#10;        val client = DefaultHttpClient()&#10;        val request = HttpGet(href)&#10;        var response: HttpResponse? = null&#10;        try {&#10;            response = client.execute(request)&#10;        } catch (e: IOException) {&#10;            e.printStackTrace()&#10;        }&#10;        val code = response!!.statusLine.statusCode&#10;        if (code != 200)&#10;            errorList.add(href)&#10;    }&#10;}" description="class" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="KOTLIN_TOPLEVEL" value="true" />
+    </context>
+  </template>
 </templateSet>

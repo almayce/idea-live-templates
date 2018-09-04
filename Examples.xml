@@ -115,4 +115,24 @@
       <option name="KOTLIN_CLASS" value="true" />
     </context>
   </template>
+  <template name="pair" value="fun main(args: Array&lt;String&gt;) {&#10;    val pair = Pair(1, &quot;one&quot;)&#10;&#10;    val (num, name) = pair&#10;&#10;    println(&quot;num = $num, name = $name&quot;)&#10;}&#10;&#10;class Pair&lt;K, V&gt;(val first: K, val second: V) {&#10;    operator fun component1(): K {&#10;        return first&#10;    }&#10;&#10;    operator fun component2(): V {&#10;        return second&#10;    }&#10;}" description="example" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="KOTLIN_TOPLEVEL" value="true" />
+    </context>
+  </template>
+  <template name="observable property" value="import kotlin.properties.Delegates&#10;&#10;class User {&#10;    var name: String by Delegates.observable(&quot;no name&quot;) {&#10;        d, old, new -&gt;&#10;        println(&quot;$old - $new&quot;)&#10;    }&#10;}&#10;&#10;fun main(args: Array&lt;String&gt;) {&#10;    val user = User()&#10;    user.name = &quot;Carl&quot;&#10;}" description="example" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="KOTLIN_TOPLEVEL" value="true" />
+    </context>
+  </template>
+  <template name="properties in map" value="class User(val map: Map&lt;String, Any?&gt;) {&#10;    val name: String by map&#10;    val age: Int     by map&#10;}&#10;&#10;fun main(args: Array&lt;String&gt;) {&#10;    val user = User(mapOf(&#10;            &quot;name&quot; to &quot;John Doe&quot;,&#10;            &quot;age&quot;  to 25&#10;    ))&#10;&#10;    println(&quot;name = ${user.name}, age = ${user.age}&quot;)&#10;}" description="example" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="KOTLIN_TOPLEVEL" value="true" />
+    </context>
+  </template>
+  <template name="callable references" value="fun main(args: Array&lt;String&gt;) {&#10;    val numbers = listOf(1, 2, 3)&#10;    println(numbers.filter(::isOdd))&#10;}&#10;&#10;fun isOdd(x: Int) = x % 2 != 0" description="example" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="KOTLIN_TOPLEVEL" value="true" />
+    </context>
+  </template>
 </templateSet>
